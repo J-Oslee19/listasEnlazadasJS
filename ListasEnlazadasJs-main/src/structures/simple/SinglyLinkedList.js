@@ -111,11 +111,36 @@ class SinglyLinkedList {
   this.head = previous;
 }
 
+  //removeDuplicates() {
+    //throw new Error(
+      //"TODO RETO: Implementar removeDuplicates() en SinglyLinkedList."
+    //);
+  //}
   removeDuplicates() {
-    throw new Error(
-      "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList."
-    );
+  let current = this.head;
+
+  while (current !== null) {
+    let runner = current;
+
+    while (runner.next !== null) {
+      if (this._isSameValue(current.value, runner.next.value)) {
+        const duplicate = runner.next;
+        runner.next = duplicate.next;
+
+        if (duplicate === this.tail) {
+          this.tail = runner;
+        }
+
+        duplicate.next = null;
+        this._size--;
+      } else {
+        runner = runner.next;
+      }
+    }
+
+    current = current.next;
   }
+}
 
   size() {
     return this._size;
