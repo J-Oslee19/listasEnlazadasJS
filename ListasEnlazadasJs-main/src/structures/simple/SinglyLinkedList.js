@@ -89,11 +89,27 @@ class SinglyLinkedList {
   this._size = 0;
 }
 
+  //reverseInPlace() {
+    //throw new Error(
+      //"TODO RETO: Implementar reverseInPlace() en SinglyLinkedList."
+   // );
+  //}
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en SinglyLinkedList."
-    );
+  let previous = null;
+  let current = this.head;
+  let next = null;
+
+  this.tail = this.head;
+
+  while (current !== null) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
   }
+
+  this.head = previous;
+}
 
   removeDuplicates() {
     throw new Error(
