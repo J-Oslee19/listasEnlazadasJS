@@ -111,11 +111,28 @@ class DoublyLinkedList {
   this._size = 0;
 }
 
+  //reverseInPlace() {
+   // throw new Error(
+     // "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList."
+    //);
+ // }
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList."
-    );
+  let current = this.head;
+  let temp = null;
+
+  this.tail = this.head;
+
+  while (current !== null) {
+    temp = current.previous;
+    current.previous = current.next;
+    current.next = temp;
+    current = current.previous;
   }
+
+  if (temp !== null) {
+    this.head = temp.previous;
+  }
+}
 
   removeDuplicates() {
     throw new Error(
