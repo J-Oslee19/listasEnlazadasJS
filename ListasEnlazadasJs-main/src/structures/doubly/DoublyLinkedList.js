@@ -134,11 +134,40 @@ class DoublyLinkedList {
   }
 }
 
+ // removeDuplicates() {
+    //throw new Error(
+     // "TODO RETO: Implementar removeDuplicates() en DoublyLinkedList."
+    //);
+ // }
   removeDuplicates() {
-    throw new Error(
-      "TODO RETO: Implementar removeDuplicates() en DoublyLinkedList."
-    );
+  let current = this.head;
+
+  while (current !== null) {
+    let runner = current;
+
+    while (runner.next !== null) {
+      if (this._isSameValue(current.value, runner.next.value)) {
+        const duplicate = runner.next;
+
+        runner.next = duplicate.next;
+
+        if (duplicate.next !== null) {
+          duplicate.next.previous = runner;
+        } else {
+          this.tail = runner;
+        }
+
+        duplicate.next = null;
+        duplicate.previous = null;
+        this._size--;
+      } else {
+        runner = runner.next;
+      }
+    }
+
+    current = current.next;
   }
+}
 
   size() {
     return this._size;
